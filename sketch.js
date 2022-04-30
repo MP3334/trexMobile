@@ -95,9 +95,10 @@ function draw() {
     if(score>0 && score%100 ===0) {
       cpSound.play();
     }
-    if(keyDown("space")&& trex.y >= 100) {
+    if (touches.lengh>0) {
       trex.velocityY = -13;
       jumpSound.play();
+      touches = [];
     }
     if (ground.x < 0){
       ground.x = ground.width/2;
@@ -131,8 +132,9 @@ function draw() {
   gameOver.visible = true
   restart.visible = true;
 
-  if(mousePressedOver(restart)){
+  if(touches.lengh>0){
     reset();
+    touches = [];
   }
   }
   
